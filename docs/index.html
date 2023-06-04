@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <style>
+         td, th {
+         border: 0px solid black;
+         }
+         img{
+         padding: 5px;
+         }
+      </style>
+      <title>SelfDocSeg: A Self-Supervised vision-based Approach towards Document Segmentation</title>
+      <!-- Global site tag (gtag.js) - Google Analytics -->
+      <!--  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+         <script>
+           window.dataLayer = window.dataLayer || [];
+         
+           function gtag() {
+             dataLayer.push(arguments);
+           }
+         
+           gtag('js', new Date());
+         
+           gtag('config', 'G-PYVRSFMDRL');
+         
+         
+         
+         </script> -->
+      <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+         rel="stylesheet">
+      <link rel="stylesheet" href="./static/css/bulma.min.css">
+      <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+      <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+      <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+      <link rel="stylesheet"
+         href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+      <link rel="stylesheet" href="./static/css/index.css">
+      <link rel="icon" href="./static/images/site_icon64.png">
+      <link rel="stylesheet" href="https://unpkg.com/image-compare-viewer/dist/image-compare-viewer.min.css">
+      <link rel="stylesheet" href="css/app.css">
+      <link rel="stylesheet" href="css/bootstrap.min.css">
+      <script src="https://unpkg.com/image-compare-viewer/dist/image-compare-viewer.min.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script defer src="./static/js/fontawesome.all.min.js"></script>
+      <script src="./static/js/bulma-carousel.min.js"></script>
+      <script src="./static/js/bulma-slider.min.js"></script>
+      <script src="./static/js/index.js"></script>
+   </head>
+   <!-- <body>
+      <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+          <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
+        <div class="navbar-menu">
+          <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+            <a class="navbar-item" href="https://keunhong.com">
+            <span class="icon">
+                <i class="fas fa-home"></i>
+            </span>
+            </a>
+      
+            <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link">
+                More Research
+              </a>
+              <div class="navbar-dropdown">
+                <a class="navbar-item" href="https://hypernerf.github.io">
+                  HyperNeRF
+                </a>
+                <a class="navbar-item" href="https://nerfies.github.io">
+                  Nerfies
+                </a>
+                <a class="navbar-item" href="https://latentfusion.github.io">
+                  LatentFusion
+                </a>
+                <a class="navbar-item" href="https://photoshape.github.io">
+                  PhotoShape
+                </a>
+              </div>
+            </div>
+          </div>
+      
+        </div>
+      </nav> -->
+   <section class="hero">
+      <div class="hero-body">
+         <div class="container is-max-desktop">
+            <div class="columns is-centered">
+               <div class="column has-text-centered">
+                  <h1 class="title is-1 publication-title", style="color:rgb(0, 42, 255);">SelfDocSeg:</h1>
+                  <h1 class="title is-4 publication-title">A Self-Supervised vision-based Approach towards Document Segmentation</h1>
+                  <div class="is-size-5 publication-authors">
+                     <span class="author-block">
+                     <a href="https://maitysubhajit.github.io/">Subhajit Maity</a><sup>1 *</sup>,</span>
+                     <span class="author-block">
+                     <a href="https://www.linkedin.com/in/sanketbiswas/">Sanket Biswas</a><sup>2 *</sup>,</span>
+                     <span class="author-block">
+                     <a href="https://sadimanna.github.io/">Siladittya Manna</a><sup>3</sup>,</span>
+                     <span class="author-block">
+                     <a href="https://www.linkedin.com/in/ayan-banerjee-733b5b16b/">Ayan Banerjee</a><sup>2</sup>,</span>
+                     <span class="author-block">
+                     <a href="http://www.cvc.uab.es/team/?action=profile&id=379">Josep Lladós</a><sup>2</sup>,</span>
+                     <span class="author-block">
+                     <a href="http://www.iitkgp.ac.in/department/EC/faculty/ec-saumik">Saumik Bhattacharya</a><sup>4</sup></span>
+                     <span class="author-block">
+                        <a href="https://www.isical.ac.in/~umapada/">Umapada Pal</a><sup>3</sup></span>	  
+                     </span>
+                  </div>
+                  <div class="is-size-5 publication-authors">
+                     <span class="author-block"><sup>1</sup>Technology Innovation Hub, Indian Statistical Institute, Kolkata, India</span>
+                     <span class="author-block"><sup>2</sup>Computer Vision Center, Computer Science Department, Universitat Aut`onoma de Barcelona, Spain</span>
+                     <span class="author-block"><sup>3</sup>CVPR Unit, Indian Statistical Institute, Kolkata, India</span>
+                     <span class="author-block"><sup>4</sup>Department of Electronics and Electrical Communication Engineering, Indian Institute of Technology Kharagpur, India</span>
+                  </div>
+                  <!--     <div class="column has-text-centered">
+                     <a href="as">ICLR 2023</a>
+                     </span>
+                     </div> -->
+                  <div class="column has-text-centered">
+                     <div class="publication-links">
+                        <!-- PDF Link. -->
+                        <span class="link-block">
+                        <a href="https://arxiv.org/pdf/2305.00795"
+                           class="external-link button is-normal is-rounded is-dark">
+                        <span class="icon">
+                        <i class="fas fa-file-pdf"></i>
+                        </span>
+                        <span>Paper (PDF)</span>
+                        </a>
+                        </span>
+                        <span class="link-block">
+                        <a href="https://arxiv.org/abs/2305.00795"
+                           class="external-link button is-normal is-rounded is-dark">
+                        <span class="icon">
+                        <i class="ai ai-arxiv"></i>
+                        </span>
+                        <span>arXiv</span>
+                        </a>
+                        </span>
+                        <!-- Video Link. -->
+                        <!-- <span class="link-block">
+                        <a href="https://www.youtube.com/watch?v=k7xFbELpnv4"
+                           class="external-link button is-normal is-rounded is-dark">
+                        <span class="icon">
+                        <i class="fab fa-youtube"></i>
+                        </span>
+                        <span>Video (YouTube)</span>
+                        </a>
+                        </span> -->
+                        <!-- Code Link. -->
+                        <span class="link-block">
+                        <a href="https://github.com/maitysubhajit/selfdocseg"
+                           class="external-link button is-normal is-rounded is-dark">
+                        <span class="icon">
+                        <i class="fab fa-github"></i>
+                        </span>
+                        <span>Code (Coming Soon)</span>
+                        </a>
+                        </span>
+                        <!-- Dataset Link. -->
+                        <span class="link-block">
+                           <a href=""
+                              class="external-link button is-normal is-rounded is-dark">
+                             <span class="icon">
+                                 <i class="far fa-images"></i>
+                             </span>
+                             <span>Slides (Coming Soon)</span>
+                           </a>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+   <section class="hero teaser">
+      <div class="container is-max-desktop">
+         <div class="hero-body">
+            <img class="round" style="width:1500px" src="./static/images/SelfDocSeg_icdar23_teaser_v2.png"/>
+            <h2 class="subtitle has-text-centered">
+               <span class="dnerf"></span> A basic methodological distinction between SelfDocSeg and existing approaches. While earlier works utilize information from visual, layout, and textual modalities for large-scale pre-training, we deal with visual cues only for boosting representation learning.
+            </h2>
+         </div>
+      </div>
+   </section>
+   <!-- <table border="1" id="cssTable">
+      <tr>
+          <td>Text</td>
+          <td>Text</td>
+      </tr>
+      </table> -->
+   <!-- 
+      <section class="hero is-light is-small">
+        <div class="hero-body">
+          <div class="container">
+            <div id="results-carousel" class="carousel results-carousel">
+              <div class="item item-steve">
+                <video poster="" id="steve" autoplay controls muted loop height="100%">
+                  <source src="https://homes.cs.washington.edu/~kpar/nerfies/videos/steve.mp4"
+                          type="video/mp4">
+                </video>
+              </div>
+              <div class="item item-chair-tp">
+                <video poster="" id="chair-tp" autoplay controls muted loop height="100%">
+                  <source src="https://homes.cs.washington.edu/~kpar/nerfies/videos/chair-tp.mp4"
+                          type="video/mp4">
+                </video>
+              </div>
+              <div class="item item-shiba">
+                <video poster="" id="shiba" autoplay controls muted loop height="100%">
+                  <source src="https://homes.cs.washington.edu/~kpar/nerfies/videos/shiba.mp4"
+                          type="video/mp4">
+                </video>
+              </div>
+              <div class="item item-fullbody">
+                <video poster="" id="fullbody" autoplay controls muted loop height="100%">
+                  <source src="https://homes.cs.washington.edu/~kpar/nerfies/videos/fullbody.mp4"
+                          type="video/mp4">
+                </video>
+              </div>
+              <div class="item item-blueshirt">
+                <video poster="" id="blueshirt" autoplay controls muted loop height="100%">
+                  <source src="https://homes.cs.washington.edu/~kpar/nerfies/videos/blueshirt.mp4"
+                          type="video/mp4">
+                </video>
+              </div>
+              <div class="item item-mask">
+                <video poster="" id="mask" autoplay controls muted loop height="100%">
+                  <source src="https://homes.cs.washington.edu/~kpar/nerfies/videos/mask.mp4"
+                          type="video/mp4">
+                </video>
+              </div>
+              <div class="item item-coffee">
+                <video poster="" id="coffee" autoplay controls muted loop height="100%">
+                  <source src="https://homes.cs.washington.edu/~kpar/nerfies/videos/coffee.mp4"
+                          type="video/mp4">
+                </video>
+              </div>
+              <div class="item item-toby">
+                <video poster="" id="toby" autoplay controls muted loop height="100%">
+                  <source src="https://homes.cs.washington.edu/~kpar/nerfies/videos/toby2.mp4"
+                          type="video/mp4">
+                </video>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+       -->
+   <section class="section">
+   <div class="container is-max-desktop">
+   <!-- Abstract. -->
+   <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+         <h2 class="title is-3">Abstract</h2>
+         <div class="content has-text-justified">
+            Document layout analysis is a known problem to the documents research community and has been vastly explored yielding a multitude of solutions ranging from text mining, and recognition to graph-based representation, visual feature extraction, etc. However, most of the existing works have ignored the crucial fact regarding the scarcity of labeled data. With growing internet connectivity to personal life, an enormous amount of documents had been available in the public domain and thus making data annotation a tedious task. We address this challenge using self-supervision and unlike, the few existing self-supervised document segmentation approaches which use text mining and textual labels, we use a complete vision-based approach in pre-training without any ground-truth label or its derivative. Instead, we generate pseudo-layouts from the document images to pre-train an image encoder to learn the document object representation and localization in a self-supervised framework before fine-tuning it with an object detection model. We show that our pipeline sets a new benchmark in this context and performs at par with the existing methods and the supervised counterparts, if not outperforms.
+            </p>
+         </div>
+      </div>
+   </div>
+   
+    <!-- <section class="hero teaser">
+      <div class="container is-max-desktop">
+         <div class="hero-body">
+		<iframe width="720" height="480"
+			src="https://www.youtube.com/embed/k7xFbELpnv4?">
+		</iframe>
+            <h2 class="subtitle has-text-centered">
+               <span class="dnerf"></span>
+            </h2>
+         </div>
+      </div>
+   </section> -->
+   
+   <!--/ Abstract. -->
+   <!-- Paper video. -->
+   <section class="section">
+      <div class="container is-max-desktop">
+      <!-- Abstract. -->
+      <!-- <div class="columns is-centered has-text-centered">
+         <div class="column is-four-fifths">
+            <h2 class="title is-3">Method</h2>
+            <div class="content has-text-justified">
+               </h2>
+               <center>
+                  <img src="./static/images/SelfDocSeg_icdar23_architecture_v4.png" alt="" border=0 height=300 width=650></img></
+               </center>
+               <h5 class="subtitle has-text-centered">
+                  SelfDocSeg intends to pre-train a CNN image encoder catering specifically catering to document image instance segmentation task. The architecture of SelfDocSeg two encoders, one updated using backpropagation and the other using EMA, and is trained using a focal loss for document object localization and a cosine similarity loss for document object representation learning.
+               </h5>
+               &nbsp; 
+            </div>
+         </div> -->
+      </div>
+   </section>
+   <section class="section">
+      <div class="container is-max-desktop">
+      <!-- Abstract. -->
+      <div class="columns is-centered has-text-centered">
+         <div class="column is-four-fifths">
+            <h2 class="title is-3">Architecture</h2>
+            <div class="content has-text-justified">
+               </h2>
+               <center>
+                  <img src="./static/images/SelfDocSeg_icdar23_architecture_v4.png" alt="architecture" border=0 height=1000 width=1500></img>
+               </center>
+               <h5 class="subtitle has-text-centered">
+                SelfDocSeg intends to pre-train a CNN image encoder catering specifically catering to document image instance segmentation task. The architecture of SelfDocSeg two encoders, one updated using backpropagation and the other using EMA, and is trained using a focal loss for document object localization and a cosine similarity loss for document object representation learning.
+               </h5>
+               <br>
+               <center>
+                <img src="static/images/SelfDocSeg_icdar23_masking_v2.png" alt="mask-generation" border=0 height=300 width=1500/>
+               </center>
+               <h5 class="subtitle has-text-centered">
+                Process for mask generation from document objects using image processing.
+               </h5>
+               <br>
+                &nbsp; 
+            </div>
+         </div>
+      </div>
+   </section>
+   <section class="hero">
+   <div class="hero-body">
+   <div class="container is-max-desktop">
+      <!-- Abstract. -->
+      <div class="columns is-centered has-text-centered">
+         <div class="column is-four-fifths">
+            <h2 class="title is-3">Results</h2>
+            <div class="content has-text-justified">
+                <center>
+                 <img src="static/images/SelfDocSeg_qualitative.png" alt="Qualitative" border=0 height=300 width=1500/>
+                </center>
+                <h5 class="subtitle has-text-centered">
+                 Samples of document segmentation using Mask RCNN with ResNet50 backbone pre-trained using SelfDocSeg.
+                </h5>
+                <br>
+               
+                <!-- <center>
+                  <img src="static/images/self.png" alt="this slowpoke moves" border=0 height=200 width=1500/>
+               </center>
+               <h5 class="subtitle has-text-centered">
+               Qualitative comparison with various state-of-the-art competitors on ShoeV2 dataset. Ours-ref (column 3) results depict that our method can faithfully replicate the appearance of a given reference photo (shown in the top-right inset).</h5>
+               <br>
+               <br>			
+               <center>
+                  <img src="static/images/edit.gif" alt="this slowpoke moves" border=0 height=150 width=400/>
+               </center>
+               <h5 class="subtitle has-text-centered">
+               Precise semantic editing.			   
+               <br>
+               <br>
+               <center>
+                  <img src="static/images/noisy.gif" alt="this slowpoke moves" border=0 height=400 width=600/>
+               </center>
+               <h5 class="subtitle has-text-centered">
+               Effect of noisy stroke addition (left) and generation from partial sketches (right).		
+               <br>
+               <br>
+               <center>
+                  <img src="static/images/unseen.gif" alt="this slowpoke moves" border=0 height=300 width=500/>
+               </center>
+               <h5 class="subtitle has-text-centered">
+               Generalisation across sketch styles.	
+               <br>
+               <br>
+               <center>
+                  <img src="static/images/multiModal.gif" alt="this slowpoke moves" border=0 height=300 width=600/>
+               </center>
+               <h5 class="subtitle has-text-centered">
+               Multi-modal generation showing varied colour and, appearance features.		
+               <br>
+               <br>
+               <center>
+                  <img src="static/images/suppl.gif" alt="this slowpoke moves" border=0 height=600 width=1000/>
+               </center>
+               <h5 class="subtitle has-text-centered">
+               Qualitative results on ShoeV2, ChairV2, and Handbag datasets.
+               <br>
+               <br>
+               <center>
+                  <img src="static/images/interp_shoe.gif" alt="this slowpoke moves" border=0 height=250 width=350/>
+                  <img src="static/images/interp_handbag.gif" alt="this slowpoke moves" border=0 height=250 width=350/>
+               </center>
+               <h5 class="subtitle has-text-centered"> 
+               Generating transitional photos between two given sketches. -->
+            </div>
+         </div>
+      </div>
+   </div>
+   <section class="section" id="BibTeX">
+      <div class="container is-max-desktop content">
+         <h2 class="title">BibTeX</h2>
+         <pre><code>@inproceedings{selfdocseg2023,
+title={{SelfDocSeg: A Self-Supervised vision-based Approach towards Document Segmentation}},
+author={Subhajit Maity and Sanket Biswas and Siladittya Manna and Ayan Banerjee and Josep Lladós and Saumik Bhattacharya and Umapada Pal},
+booktitle={International Conference on Document Analysis and Recognition (ICDAR)},
+year={2023}}</code></pre>
+      </div>
+   </section>
+   <script>
+      const viewers = document.querySelectorAll(".image-compare");
+      viewers.forEach((element) => {
+          let view = new ImageCompare(element, {
+              hoverStart: true,
+              addCircle: true
+          }).mount();
+      });
+      
+      $(document).ready(function () {
+          var editor = CodeMirror.fromTextArea(document.getElementById("bibtex"), {
+              lineNumbers: false,
+              lineWrapping: true,
+              readOnly: true
+          });
+          $(function () {
+              $('[data-toggle="tooltip"]').tooltip()
+          })
+      });
+   </script>
+   <br>
+   <p style="text-align:center"> Copyright: <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"> CC BY-NC-SA 4.0</a> © Subhajjit Maity | Last updated: 4 Jun 2023 |Template Credit: <a href="https://nerfies.github.io/"> Nerfies</a></p>
+   </body>
+</html>
