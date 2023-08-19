@@ -3,11 +3,13 @@
 	<center><img src="./docs/static/images/banner.jpg" width=60% alt="Banner"></center>
 	<br>
    <center>
+      <a href="https://icdar2023.org">
       <picture>
       <source media="(prefers-color-scheme: dark)" srcset="https://i0.wp.com/icdar2023.org/wp-content/uploads/2022/08/ICDAR-2023-Logo-white-v10-color.png?fit=1818%2C461&ssl=1">
       <source media="(prefers-color-scheme: light)" srcset="https://i0.wp.com/icdar2023.org/wp-content/uploads/2022/08/ICDAR-2023-Logo-v10-color.png">
-      <a href="https://icdar2023.org"><img alt="icdar icon dual mode" src="https://i0.wp.com/icdar2023.org/wp-content/uploads/2022/08/ICDAR-2023-Logo-v10-color.png" width=20%></a>
+      <img alt="icdar icon dual mode" src="https://i0.wp.com/icdar2023.org/wp-content/uploads/2022/08/ICDAR-2023-Logo-v10-color.png" width=20%>
       </picture>
+      </a>
       <!-- <a href="https://icdar2023.org"><img src="https://i0.wp.com/icdar2023.org/wp-content/uploads/2022/08/ICDAR-2023-Logo-white-v10-color.png?fit=1818%2C461&ssl=1" width=20% alt="icdar banner"></a> -->
       <br>
       <br>
