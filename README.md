@@ -14,7 +14,7 @@
       <br>
       <br>
       <!-- <img src="https://img.shields.io/badge/Build-Passing-brightgreen?style=plastic" width=7.5% alt="Build shield"> -->
-      <a href="https://link.springer.com/chapter/10.1007/978-3-031-41676-7_20"><img src="https://img.shields.io/badge/-DOI-FAB70C?style=plastic&logo=doi" alt="doi shield"></a>
+      <a href="https://doi.org/10.1007/978-3-031-41676-7_20"><img src="https://img.shields.io/badge/-DOI-FAB70C?style=plastic&logo=doi" alt="doi shield"></a>
       <a href="https://arxiv.org/abs/2305.00795"><img src="https://img.shields.io/badge/-Paper-B31B1B?style=plastic&logo=arXiv" alt="arxiv shield"></a>
       <a href="https://maitysubhajit.github.io/SelfDocSeg/"><img src="https://img.shields.io/badge/-Project%20Page-222222?style=plastic&logo=githubpages" alt="github pages shield"></a>
       <a href="https://github.com/MaitySubhajit/SelfDocSeg"><img src="https://img.shields.io/badge/-Code-181717?style=plastic&logo=github" alt="github shield"></a>
