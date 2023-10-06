@@ -29,7 +29,7 @@
 </div>
 
 # [ICDAR 2023] SelfDocSeg: A self-supervised vision-based approach towards Document Segmentation :fire:
-This is the official implementation of the paper [SelfDocSeg: A self-supervised vision-based approach towards Document Segmentation](https://doi.org/10.1007/978-3-031-41676-7_20) by [S. Maity](https://maitysubhajit.github.io), [S. Biswas](https://www.linkedin.com/in/sanketbiswas), [S. Manna](https://sadimanna.github.io), [A. Banerjee](https://www.linkedin.com/in/ayan-banerjee-733b5b16b), [J. Lladós](http://www.cvc.uab.es/team/?action=profile&id=379), [S. Bhatttacharya](http://www.iitkgp.ac.in/department/EC/faculty/ec-saumik), [U. Pal](https://www.isical.ac.in/~umapada) published in the proceedings of [ICDAR 2023](https://icdar2023.org).
+This is the official implementation of the paper [SelfDocSeg: A self-supervised vision-based approach towards Document Segmentation](https://doi.org/10.1007/978-3-031-41676-7_20) by [S. Maity](https://maitysubhajit.github.io), [S. Biswas](https://www.linkedin.com/in/sanketbiswas), [S. Manna](https://sadimanna.github.io), [A. Banerjee](https://github.com/ayanban011), [J. Lladós](http://www.cvc.uab.es/team/?action=profile&id=379), [S. Bhatttacharya](http://www.iitkgp.ac.in/department/EC/faculty/ec-saumik), [U. Pal](https://www.isical.ac.in/~umapada) published in the proceedings of [ICDAR 2023](https://icdar2023.org).
 
 ### :loudspeaker: Recent Updates
 - *18 Aug 2023* : Pre-release is available! A stable release will be coming soon if required. If you face any problem, please read the [FAQ & Issues](#mag-faqs-notes-issues) section and raise an issue if necessary.
